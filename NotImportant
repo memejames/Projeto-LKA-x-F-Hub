@@ -1,3 +1,4 @@
+-- hi
 local Player = game:GetService("Players").LocalPlayer
 local Mouse = Player:GetMouse()
 
@@ -796,8 +797,8 @@ function Material.Load(Config)
     if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseButton1 then
         local start = input.Position
         local startPos = MainFrame.Position
-        local offset = start - Vector2.new(startPos.X.Offset, startPos.Y.Offset)
-        
+        local offset = Vector2.new(start.X - startPos.X.Offset, start.Y - startPos.Y.Offset)
+
         local moveConn
         moveConn = InputService.InputChanged:Connect(function(input)
             if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseMovement then
@@ -805,7 +806,7 @@ function Material.Load(Config)
                 MainFrame.Position = UDim2.new(0, offset.X + delta.X, 0, offset.Y + delta.Y)
             end
         end)
-        
+
         local endConn
         endConn = InputService.InputEnded:Connect(function(input)
             if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseButton1 then
@@ -815,6 +816,7 @@ function Material.Load(Config)
         end)
     end
 end)
+
 
 
 	local MinimiseButton = Objects.new("SmoothButton")
