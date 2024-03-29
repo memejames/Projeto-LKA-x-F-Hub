@@ -794,14 +794,14 @@ function Material.Load(Config)
 
 	TitleText.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseButton1 then
-        local start = input.Position
-        local startPos = MainFrame.AbsolutePosition
-        local offset = start - Vector2.new(startPos.X, startPos.Y)
+        local start = Vector2.new(input.Position.X, input.Position.Y)
+        local startPos = Vector2.new(MainFrame.AbsolutePosition.X, MainFrame.AbsolutePosition.Y)
+        local offset = start - startPos
 
         local moveConn
         moveConn = InputService.InputChanged:Connect(function(input)
             if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseMovement then
-                local delta = input.Position - start
+                local delta = Vector2.new(input.Position.X, input.Position.Y) - start
                 MainFrame.Position = UDim2.new(0, offset.X + delta.X, 0, offset.Y + delta.Y)
             end
         end)
@@ -815,6 +815,7 @@ function Material.Load(Config)
         end)
     end
 end)
+
 
 
 
