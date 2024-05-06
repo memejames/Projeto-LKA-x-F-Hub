@@ -2,4 +2,4 @@
 - Collab between Projeto LKA and F Hub
 
 # Update
-- Added CloseButton 
+- Discontinued
